@@ -1,0 +1,21 @@
+<div class="form-group">
+  <label for="videoUrl">URL видео:</label>
+  <input 
+    type="url" 
+    id="videoUrl" 
+    name="videoUrl" 
+    [ngModel]="videoUrl()" 
+    (ngModelChange)="onVideoUrlChange($event)"
+    placeholder="https://www.youtube.com/watch?v=..." 
+    required 
+    class="form-control"
+    [class.error]="hasError()" 
+    (blur)="onBlur()" 
+    data-testid="video-url-input" 
+  />
+  @if (hasError()) {
+    <div class="error-message" data-testid="video-url-error">
+      {{ errorMessage() }}
+    </div>
+  }
+</div> 

@@ -1,0 +1,40 @@
+.summary-content {
+  margin-bottom: 2rem;
+}
+
+.summary-content h4 {
+  color: #4a5568;
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.summary-points {
+  list-style: disc inside;
+  margin: 0 0 1.5rem 0;
+  padding: 0;
+}
+
+.summary-points li {
+  color: #2d3748;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.summary-full {
+  margin-top: 1.5rem;
+  background: #f7fafc;
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.summary-full p {
+  color: #4a5568;
+  font-size: 1rem;
+  margin: 0;
+}
+
+.summary-meta {
+  margin-top: 1rem;
+  color: #718096;
+  font-size: 0.95rem;
+} 

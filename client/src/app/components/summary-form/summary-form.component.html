@@ -1,0 +1,56 @@
+<div class="summary-form-container" data-testid="summary-form">
+  <div class="form-section">
+    <div class="form-card">
+      <h2>Введите URL YouTube видео</h2>
+      <p class="form-description">
+        Получите транскрипцию и краткое саммари любого YouTube видео с субтитрами
+      </p>
+
+      <form (ngSubmit)="onSubmit()" #videoForm="ngForm" class="video-form">
+        <app-video-url-input 
+          [videoUrl]="videoUrl" 
+          [hasError]="hasFieldError('videoUrl')"
+          [errorMessage]="getFieldError('videoUrl')" 
+          (videoUrlChange)="videoUrl = $event"
+          (blur)="onFieldBlur()" />
+
+        <app-max-points-select 
+          [maxPoints]="maxPoints" 
+          [hasError]="hasFieldError('maxPoints')"
+          [errorMessage]="getFieldError('maxPoints')" 
+          (maxPointsChange)="maxPoints = $event"
+          (blur)="onFieldBlur()" />
+
+        <button type="submit" [disabled]="!isFormValid() || isLoading()" class="submit-btn"
+          data-testid="generate-summary-btn">
+          @if (!isLoading()) {
+            <span>Получить саммари</span>
+          } @else {
+            <span>Обработка...</span>
+          }
+        </button>
+      </form>
+    </div>
+  </div>
+
+  @if (hasResults()) {
+    <div class="results-section">
+      <div class="results-card">
+        @if (error()) {
+          <app-error-card [errorMessage]="error()" (retry)="clearError()" />
+        }
+
+        @if (videoInfo() && !summary()) {
+          <app-loading-card [videoInfo]="videoInfo()!" />
+        }
+
+        @if (summary()) {
+          <app-summary-card 
+            [summary]="summary()!" 
+            (copySummary)="copySummary()" 
+            (reset)="resetForm()" />
+        }
+      </div>
+    </div>
+  }
+</div>

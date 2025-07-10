@@ -1,0 +1,23 @@
+<div class="form-group">
+  <label for="maxPoints">Количество пунктов саммари:</label>
+  <select 
+    id="maxPoints" 
+    name="maxPoints" 
+    [ngModel]="maxPoints()" 
+    (ngModelChange)="onMaxPointsChange($event)"
+    class="form-control"
+    [class.error]="hasError()" 
+    (blur)="onBlur()" 
+    data-testid="max-points-input"
+  >
+    <option value="3">3 пункта</option>
+    <option value="5">5 пунктов</option>
+    <option value="7">7 пунктов</option>
+    <option value="10">10 пунктов</option>
+  </select>
+  @if (hasError()) {
+    <div class="error-message" data-testid="max-points-error">
+      {{ errorMessage() }}
+    </div>
+  }
+</div> 

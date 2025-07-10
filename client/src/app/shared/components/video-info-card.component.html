@@ -1,0 +1,44 @@
+<div class="video-info-card" data-testid="video-info-card">
+  <div class="video-thumbnail-container">
+    <img 
+      [src]="videoInfo().thumbnailUrl" 
+      [alt]="videoInfo().title" 
+      class="video-thumbnail"
+      loading="lazy"
+    />
+    <div class="video-duration" data-testid="video-duration">
+      {{ formatDuration(videoInfo().duration) }}
+    </div>
+  </div>
+  
+  <div class="video-details">
+    <h4 class="video-title" [title]="videoInfo().title" data-testid="video-title">
+      {{ videoInfo().title }}
+    </h4>
+    
+    <div class="video-meta">
+      <p class="video-author" data-testid="video-author">
+        <i class="icon-user"></i>
+        {{ videoInfo().author }}
+      </p>
+      
+      <p class="video-stats">
+        <span class="video-views">
+          <i class="icon-eye"></i>
+          {{ formatNumber(videoInfo().viewCount) }} просмотров
+        </span>
+        
+        <span class="video-date">
+          <i class="icon-calendar"></i>
+          {{ formatDate(videoInfo().uploadDate) }}
+        </span>
+      </p>
+    </div>
+    
+    @if (showDescription()) {
+      <p class="video-description">
+        {{ truncateDescription(videoInfo().description) }}
+      </p>
+    }
+  </div>
+</div> 

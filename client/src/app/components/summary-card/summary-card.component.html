@@ -1,0 +1,28 @@
+<div class="summary-card">
+  <h3>Краткое саммари</h3>
+
+  <app-video-info-card [videoInfo]="summary().videoInfo" data-testid="video-info-card" />
+
+  <div class="summary-content" data-testid="summary-section">
+    <h4>Ключевые пункты:</h4>
+    <ul class="summary-points" data-testid="summary-points">
+      @for (point of summary().summaryPoints; track point) {
+        <li>{{ point }}</li>
+      }
+    </ul>
+
+    <div class="summary-full" data-testid="full-summary">
+      <h4>Полное саммари:</h4>
+      <p>{{ summary().fullSummary }}</p>
+    </div>
+
+    <div class="summary-meta">
+      <p><strong>Создано:</strong> {{ formatDate(summary().generatedAt) }}</p>
+    </div>
+  </div>
+
+  <div class="actions">
+    <button (click)="onCopySummary()" class="btn-secondary">Копировать саммари</button>
+    <button (click)="onReset()" class="btn-primary">Новое видео</button>
+  </div>
+</div> 
